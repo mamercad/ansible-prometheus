@@ -53,6 +53,7 @@
       become: false
       unarchive:
         src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
+        remote_src: true
         dest: "/tmp"
         creates: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/prometheus"
       # delegate_to: localhost
