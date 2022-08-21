@@ -62,6 +62,7 @@
     - name: propagate official prometheus and promtool binaries
       copy:
         src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/{{ item }}"
+        remote_src: true
         dest: "{{ _prometheus_binary_install_dir }}/{{ item }}"
         mode: 0755
         owner: root
@@ -75,6 +76,7 @@
     - name: propagate official console templates
       copy:
         src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}/{{ item }}/"
+        remote_src: true
         dest: "{{ prometheus_config_dir }}/{{ item }}/"
         mode: 0644
         owner: root
@@ -91,6 +93,7 @@
 - name: propagate locally distributed prometheus and promtool binaries
   copy:
     src: "{{ prometheus_binary_local_dir }}/{{ item }}"
+    remote_src: true
     dest: "{{ _prometheus_binary_install_dir }}/{{ item }}"
     mode: 0755
     owner: root
